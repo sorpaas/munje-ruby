@@ -23,7 +23,8 @@ loop do
 
   begin
     s_expression = Reader.new(line).read
-    p lisp.eval(s_expression)
+    lisp.claim(s_expression)
+    p lisp.env
   rescue Exception => error
     # ANSI escaped red
     puts "\e[31m"
