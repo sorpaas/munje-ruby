@@ -1,6 +1,6 @@
 require 'readline'
-require 'lithp'
-require 'reader'
+require_relative 'lithp'
+require_relative 'reader'
 
 # Exit gracefully with ctrl-c
 stty_save = `stty -g`.chomp
