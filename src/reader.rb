@@ -1,6 +1,6 @@
 class Reader
   def initialize(expression)
-    @tokens = expression.scan /[()]|[\w']+/
+    @tokens = expression.scan /[()]|[\w'+-]+/
   end
 
   def peek

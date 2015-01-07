@@ -83,6 +83,30 @@ class Lisp
         l = r if r
         r = l if l
         [l, r]
+      },
+      :"+" => lambda { |(add1,add2,result)|
+        if not add1
+          add1 = (result.to_s.to_i - add2.to_s.to_i).to_s.to_sym
+        end
+        if not add2
+          add2 = (result.to_s.to_i - add1.to_s.to_i).to_s.to_sym
+        end
+        if not result
+          result = (add1.to_s.to_i + add2.to_s.to_i).to_s.to_sym
+        end
+        [add1, add2, result]
+      },
+      :"-" => lambda { |(add1,add2,result)|
+        if not add1
+          add1 = (result.to_s.to_i + add2.to_s.to_i).to_s.to_sym
+        end
+        if not add2
+          add2 = (add1.to_s.to_i - result.to_s.to_i).to_s.to_sym
+        end
+        if not result
+          result = (add1.to_s.to_i - add2.to_s.to_i).to_s.to_sym
+        end
+        [add1, add2, result]
       }
     }
   end
