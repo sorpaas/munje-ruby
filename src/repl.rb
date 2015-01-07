@@ -22,9 +22,12 @@ loop do
   exit if line =~ /^exit$/i
 
   begin
-    s_expression = Reader.new(line).read
-    lisp.claim(s_expression)
-    p lisp.env
+    if line.strip == ":resolve"
+      p lisp.resolve
+    else
+      s_expression = Reader.new(line).read
+      lisp.claim(s_expression)
+    end
   rescue Exception => error
     # ANSI escaped red
     puts "\e[31m"

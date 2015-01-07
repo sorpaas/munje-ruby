@@ -16,8 +16,6 @@ class Reader
 
     if (token = next_token) == '('
       read_list
-    elsif token =~ /\d+/
-      token.to_i
     else
       token.to_sym
     end
