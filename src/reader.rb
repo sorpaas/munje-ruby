@@ -1,6 +1,6 @@
 class Reader
   def initialize(expression)
-    @tokens = expression.scan /[()]|\w+|".*?"|'.*?'/
+    @tokens = expression.scan /[()]|[\w']+/
   end
 
   def peek
@@ -16,8 +16,6 @@ class Reader
 
     if (token = next_token) == '('
       read_list
-    elsif token =~ /['"].*/
-      token[1..-2]
     elsif token =~ /\d+/
       token.to_i
     else
